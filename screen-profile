@@ -1,0 +1,23 @@
+#!/usr/bin/sh
+
+#
+# You may need to adjust the output names VGA1/LVDS1 according to
+# your setup, see xrandr -q
+#
+
+case "$1" in
+	"work" | "external" )
+		# My work setup is VGA only
+		xrandr --output LVDS1 --off --output VGA1 --auto
+		;;
+	"auto" )
+		# likely this will enable all connected screens
+		xrandr --auto
+		;;
+	*)
+		# Default oof for VGA, on for LVDS
+		xrandr --output VGA1 --off --output LVDS1 --auto
+		;;
+
+esac
+
